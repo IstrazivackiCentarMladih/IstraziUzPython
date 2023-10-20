@@ -2,8 +2,8 @@
     File name: program.py
     Author: Istrazivacki centar mladih
     Date created: 16.10.2020
-    Date last modified: 16.10.2020
-    Python Version: 2.7
+    Date last modified: 20.10.2023
+    Python Version: 3.9
     Description:
         Program obtains weather data from yr.no API by using https://api.met.no/weatherapi/locationforecast/2.0/documentation#/.
         When running the program one must follow yr.no terms of service https://hjelp.yr.no/hc/en-us/articles/360001946134-Data-access-and-terms-of-service
@@ -19,10 +19,14 @@ def obtain_weather_data(lat, lon, altitude=None):
     return df_forecast
 
 def get_complete_forecast_json(lat, lon, altitude=None):
+    headers = {
+        "User-Agent": "Youth Research Center - Zagreb, Croatia - mail@icm.hr"
+    }
+    
     uri = f"https://api.met.no/weatherapi/locationforecast/2.0/complete?lat={lat}&lon={lon}"
     if altitude:
         uri = uri + f"&altitude={altitude}"
-    return requests.get(uri).json()
+    return requests.get(uri, headers=headers).json()
 
 def transform_weather_data_to_dataframe(forecast_json):
     ts = forecast_json['properties']['timeseries']

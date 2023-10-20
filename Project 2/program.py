@@ -24,10 +24,10 @@ def task_4(df):
     print("Površina po regiji")
     print(df_region["Area (sq. mi.)"].sum())
 
-    df_region["Population"].sum().plot.bar()
+    df_region["Population"].sum().plot.bar(figsize=(10, 5))
     plt.xticks(
-        rotation=60,
-        horizontalalignment='right',
+        rotation=10,
+        horizontalalignment='center',
         fontweight='light',
         fontsize='small',
     )
@@ -39,8 +39,12 @@ def task_4(df):
 def task_5(df):
     df.to_csv('podaci.csv')
 
-
-df = pd.read_csv("countries of the world.csv")
-
+if __name__ == "__main__":
+    df = pd.read_csv("countries of the world.csv")
+    task_1(df)
+    task_2(df)
+    task_3(df)
+    task_4(df)
+    task_5(df)
 
 
