@@ -24,7 +24,7 @@ def calculate_projectile_motion_points(vx, vy, h0=0, dt=0.01, noise=0):
     return data
 
 
-def plot_data(theory, simulation=None):
+def plot_data(theory, simulation:dict):
     fig, ax = plt.subplots(2, 2)
     ax[-1, -1].axis('off') # we will use only 3 out of 4 plots
 
